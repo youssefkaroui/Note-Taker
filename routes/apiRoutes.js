@@ -5,7 +5,6 @@ const fs = require('fs')
 // npm package that generates unique ids for user inputs 
 var uniqid = require('uniqid');
 
-
 module.exports = (app) => {
 
   // GET request  reads the db.json file and returns saved notes
@@ -28,6 +27,14 @@ module.exports = (app) => {
     fs.writeFileSync('db/db.json', JSON.stringify(db));
     res.json(db);
   });
-
-
+  // DELETE request receives a query parameter containing the specific id to be deleted.
+  app.delete('/api/notes/:id', (req, res) => {
+    // grabs notes form db.json
+    let db = JSON.parse(fs.readFileSync('db/db.json'))
+    // deleting the note by its id 
+    let deleteNotes = db.filter(item => item.id !== req.params.id);
+    // Rewriting the updated notes that reflect the delete to db.json 
+    fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
+    res.json(deleteNotes);
+   })
 };
