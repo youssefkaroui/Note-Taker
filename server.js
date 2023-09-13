@@ -1,7 +1,7 @@
 // dependencies
 const express = require('express');
-const path = require('path');
-const api = require('./routes/index.js')
+
+
 
 // starting express app
 const app = express();
@@ -14,6 +14,7 @@ app.use(express.static('__dirname'));
 
 // routes file
 require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 // starts the server
 app.listen(PORT, () => {
