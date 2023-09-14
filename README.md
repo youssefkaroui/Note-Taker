@@ -1,6 +1,6 @@
 # Note-Taker
   
-  ![alt text](./assets/README.screenshot.png) Looks like this 
+  ![alt text](./assets/README.screenshot.png) 
  
  
  
